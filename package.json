@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
+  "homepage": "https://alexis-burakov.github.io/ratingApp/",
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^5.2.1",
+    "gh-pages": "^2.1.1",
     "react-hot-loader": "^4.12.13",
     "react-scripts": "^2.1.8"
   },
