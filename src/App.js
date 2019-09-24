@@ -17,16 +17,16 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		// connect.subscribe((e) => {
-		// 	switch (e.detail.type) {
-		// 		case 'VKWebAppGetUserInfoResult':
-		// 			this.setState({ fetchedUser: e.detail.data });
-		// 			break;
-		// 		default:
-		// 			console.log(e.detail.type);
-		// 	}
-		// });
-		// connect.send('VKWebAppGetUserInfo', {});
+		connect.subscribe((e) => {
+			switch (e.detail.type) {
+				case 'VKWebAppGetUserInfoResult':
+					this.setState({ fetchedUser: e.detail.data });
+					break;
+				default:
+					console.log(e.detail.type);
+			}
+		});
+		connect.send('VKWebAppGetUserInfo', {});
 	}
 
 	go = (e) => {

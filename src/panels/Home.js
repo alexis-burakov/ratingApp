@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, ListItem, Group, Select, Avatar, PanelHeader, Div } from '@vkontakte/vkui';
-// import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Panel, ListItem, Button, Group, Div, Avatar, PanelHeader } from '@vkontakte/vkui';
 
-class Home extends React.Component {
-	constructor(props) {
-		super(props);
+const Home = ({ id, go, fetchedUser }) => (
+	<Panel id={id}>
+		<PanelHeader>Test 1</PanelHeader>
+		{fetchedUser &&
+		<Group title="User Data Fetched with VK Connect">
+			<ListItem
+				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
+				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
+			>
+				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+			</ListItem>
+		</Group>}
 
-		this.state = {
-			activeModal: 'select-period',
-			period: 'week'
-		};
-	};
-	render() {
-	    return (
-			<Panel id={this.props.id} >
-				<PanelHeader>Рейтинг группы</PanelHeader>
-				<div className="panel-body">
-					<Div>Test</Div>
-				</div>
-			</Panel>
-		)
-	}
-}
+		<Group title="Navigation Example">
+			<Div>
+				<Button size="xl" level="2" onClick={go} data-to="persik">
+					Show me the Persik, please
+				</Button>
+			</Div>
+		</Group>
+	</Panel>
+);
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
